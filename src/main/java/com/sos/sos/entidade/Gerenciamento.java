@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -17,29 +16,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "denuncia")
-public class Denuncia {
+@Table(name = "gerenciamento")
+public class Gerenciamento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seq_denuncia")
-	private Long id;
-
+    private Long id;
+	
 	@ManyToOne
-	@JoinColumn(name = "seq_usuario")
-	private Usuario usuario;
+	@JoinColumn(name = "seq_denuncia")
+	private Denuncia denuncia;
 	
-	@OneToMany(mappedBy = "denuncia")
-    private Gerenciamento gerenciamento;
-	
-	@Column(name = "descricao")
-    private String descricao;
-	
-	@Column(name = "arquivo_base_64")
-    private String arquivo;
-	
-	@Column(name = "geolocalizacao")
-    private Long geolocalizacao;
+	@Column(name = "status")
+    private String status;
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_inicio")
@@ -48,6 +38,5 @@ public class Denuncia {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_fim")
     private Date dataFim;
-	
 	
 }

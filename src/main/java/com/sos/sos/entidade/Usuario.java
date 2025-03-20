@@ -21,6 +21,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "seq_usuario")
     private Long id;
     
     @OneToMany(mappedBy = "denuncia")
