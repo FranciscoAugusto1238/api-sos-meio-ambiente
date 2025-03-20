@@ -31,7 +31,7 @@ public class Usuario {
     private String nome;
 
     @Column(name = "cpf")
-    private Double cpf;
+    private Long cpf;
     
     @Column(name = "UF")
     private String uf;
