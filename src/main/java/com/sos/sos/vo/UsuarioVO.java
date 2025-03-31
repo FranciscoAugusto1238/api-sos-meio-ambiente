@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 public class UsuarioVO {
 	
 	private Long id;
-	private DenunciaVO denuncia;
 	private String nome;
 	private Long cpf;
 	private String uf;
@@ -29,8 +28,13 @@ public class UsuarioVO {
 	
 	public UsuarioVO(Usuario usuario) {
 		
+		this.id = usuario.getId();
 		this.nome = usuario.getNome();
 		this.cpf = usuario.getCpf();
+		this.uf = usuario.getUf();
+		this.municipio = usuario.getMunicipio();
+		this.dataNascimento = usuario.getDataNascimento();
+		this.ativo = usuario.getAtivo();
 		
 	}
 
