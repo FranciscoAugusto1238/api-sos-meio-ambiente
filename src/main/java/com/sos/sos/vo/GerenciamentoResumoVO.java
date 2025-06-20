@@ -1,36 +1,25 @@
 package com.sos.sos.vo;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sos.sos.entidade.Gerenciamento;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GerenciamentoVO {
-    
+public class GerenciamentoResumoVO {
+
     private Long id;
     private String status;
-    private DenunciaVO denuncia;
-    private Date dataInicio;
 
-
-    public GerenciamentoVO(Gerenciamento gerenciamento) {
+    public GerenciamentoResumoVO(Gerenciamento gerenciamento) {
         this.id = gerenciamento.getId();
         this.status = gerenciamento.getStatus();
-        this.dataInicio = gerenciamento.getDataInicio();
-        if (gerenciamento.getDenuncia() != null) {
-            this.denuncia = new DenunciaVO(gerenciamento.getDenuncia());
-        }
     }
 }

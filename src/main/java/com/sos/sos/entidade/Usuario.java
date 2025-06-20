@@ -2,6 +2,9 @@ package com.sos.sos.entidade;
 
 
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +19,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "usurio")
+@Table(name = "usurio_sos")
 public class Usuario {
 
     @Id
@@ -24,9 +27,9 @@ public class Usuario {
     @Column(name = "seq_usuario")
     private Long id;
     
-    @OneToMany(mappedBy = "denuncia")
-    private Denuncia denuncia;
-
+    @OneToMany(mappedBy = "usuario")
+    private List<Denuncia> denuncias;
+    
     @Column(name = "nome")
     private String nome;
 
@@ -53,4 +56,7 @@ public class Usuario {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_fim")
     private Date dataFim;
+    
+    @Column(name = "senha")
+    private String senha;
 }

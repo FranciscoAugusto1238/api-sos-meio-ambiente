@@ -25,6 +25,7 @@ public class UsuarioVO {
 	private String municipio;
 	private Date dataNascimento;
 	private Boolean ativo;
+	private String senha;
 	
 	public UsuarioVO(Usuario usuario) {
 		
@@ -35,6 +36,7 @@ public class UsuarioVO {
 		this.municipio = usuario.getMunicipio();
 		this.dataNascimento = usuario.getDataNascimento();
 		this.ativo = usuario.getAtivo();
+		this.senha = usuario.getSenha();
 		
 	}
 

@@ -1,6 +1,10 @@
 package com.sos.sos.entidade;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -17,7 +22,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "denuncia")
+@Table(name = "denuncia_sos")
 public class Denuncia {
 
 	@Id
@@ -30,16 +35,18 @@ public class Denuncia {
 	private Usuario usuario;
 	
 	@OneToMany(mappedBy = "denuncia")
-    private Gerenciamento gerenciamento;
+	private List<Gerenciamento> gerenciamentos = new ArrayList<>();
 	
+	@Lob
 	@Column(name = "descricao")
     private String descricao;
 	
+	@Lob
 	@Column(name = "arquivo_base_64")
     private String arquivo;
 	
 	@Column(name = "geolocalizacao")
-    private Long geolocalizacao;
+    private String  geolocalizacao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_inicio")

@@ -16,12 +16,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "gerenciamento")
+@Table(name = "gerenciamento_sos")
 public class Gerenciamento {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seq_denuncia")
+    @Column(name = "seq_gerenciamento")
     private Long id;
 	
 	@ManyToOne
